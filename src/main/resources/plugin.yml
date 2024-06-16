@@ -1,0 +1,9 @@
+name: JCore
+version: '${project.version}'
+main: de.sirswiperlpp.jcore.Main.Main
+api-version: '1.20'
+
+commands:
+  ban:
+    permission: jcore.admin.ban
+    description: a command to ban players
