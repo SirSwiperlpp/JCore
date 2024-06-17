@@ -20,7 +20,7 @@ public class BanPROV
     public static String getBannedPlayer(String playername) throws SQLException
     {
         try {
-            String query = "SELECT UUID FROM ptable WHERE player_name = ?";
+            String query = "SELECT UUID FROM bantable WHERE player_name = ?";
             try (PreparedStatement statement = MySQL.getConnection().prepareStatement(query)) {
                 statement.setString(1, playername);
 
@@ -40,7 +40,7 @@ public class BanPROV
     public static String getBanReason(String playername) throws SQLException
     {
         try {
-            String query = "SELECT REASON FROM ptable WHERE player_name = ?";
+            String query = "SELECT REASON FROM bantable WHERE player_name = ?";
             try (PreparedStatement statement = MySQL.getConnection().prepareStatement(query)) {
                 statement.setString(1, playername);
 

@@ -1,6 +1,7 @@
 package de.sirswiperlpp.jcore.Main;
 
 import de.sirswiperlpp.jcore.Commands.BanCommand;
+import de.sirswiperlpp.jcore.Commands.KickCommand;
 import de.sirswiperlpp.jcore.Lang.Language;
 import de.sirswiperlpp.jcore.Listener.PlayerListener;
 import de.sirswiperlpp.jcore.Provider.BanPROV;
@@ -69,6 +70,7 @@ public final class Main extends JavaPlugin {
         pm.registerEvents(new PlayerListener(), this);
 
         getCommand("ban").setExecutor(new BanCommand());
+        getCommand("kick").setExecutor(new KickCommand());
     }
 
     @Override

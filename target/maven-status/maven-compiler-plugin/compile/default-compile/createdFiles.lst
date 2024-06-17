@@ -1,7 +1,8 @@
-de\sirswiperlpp\jcore\Provider\PlayerPROV.class
 de\sirswiperlpp\jcore\Lang\Language.class
-de\sirswiperlpp\jcore\SQL\MySQL.class
 de\sirswiperlpp\jcore\Commands\BanCommand.class
+de\sirswiperlpp\jcore\Commands\KickCommand.class
+de\sirswiperlpp\jcore\Provider\PlayerPROV.class
+de\sirswiperlpp\jcore\SQL\MySQL.class
 de\sirswiperlpp\jcore\Listener\PlayerListener.class
 de\sirswiperlpp\jcore\Util\uuidRQST.class
 de\sirswiperlpp\jcore\API\PlayerAPI.class
