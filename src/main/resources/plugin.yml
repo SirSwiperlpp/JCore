@@ -11,6 +11,9 @@ commands:
   kick:
     permission: jcore.admin.ban
     description: a command to kick players
+  tpa:
+    permission: tpa.use
+    description: a command to request Teleports
 
 permissions:
   jcore.admin.ban:
@@ -19,3 +22,6 @@ permissions:
   jcore.admin.kick:
     description: permssion for kick command
     default: op
+  tpa.use:
+    description: perm for tpa command
+    default: true

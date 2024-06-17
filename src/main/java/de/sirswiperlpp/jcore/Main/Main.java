@@ -2,11 +2,14 @@ package de.sirswiperlpp.jcore.Main;
 
 import de.sirswiperlpp.jcore.Commands.BanCommand;
 import de.sirswiperlpp.jcore.Commands.KickCommand;
+import de.sirswiperlpp.jcore.Commands.TpaCommand;
 import de.sirswiperlpp.jcore.Lang.Language;
 import de.sirswiperlpp.jcore.Listener.PlayerListener;
 import de.sirswiperlpp.jcore.Provider.BanPROV;
 import de.sirswiperlpp.jcore.Provider.PlayerPROV;
+import de.sirswiperlpp.jcore.Provider.TpaPROV;
 import de.sirswiperlpp.jcore.SQL.MySQL;
+import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
@@ -62,6 +65,7 @@ public final class Main extends JavaPlugin {
         try {
             PlayerPROV.createPlayerTable();
             BanPROV.createBanTable();
+            TpaPROV.createPlayerTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -71,6 +75,8 @@ public final class Main extends JavaPlugin {
 
         getCommand("ban").setExecutor(new BanCommand());
         getCommand("kick").setExecutor(new KickCommand());
+        getCommand("tpa").setExecutor(new TpaCommand());
+        getCommand("tpa").setTabCompleter(new TpaCompleter());
     }
 
     @Override

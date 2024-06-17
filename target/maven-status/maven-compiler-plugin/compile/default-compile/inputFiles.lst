@@ -1,10 +1,14 @@
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Listener\PlayerListener.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Main\Main.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\API\PlayerAPI.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Commands\TpaCommand.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\API\TpaAPI.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Provider\BanPROV.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Lang\Language.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\TabCom\TpaCompleter.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\SQL\MySQL.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Commands\BanCommand.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Provider\PlayerPROV.java
+F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Provider\TpaPROV.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Util\uuidRQST.java
-F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Provider\BanPROV.java
 F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Commands\KickCommand.java
-F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\Lang\Language.java
-F:\JavaProjects\JCore\src\main\java\de\sirswiperlpp\jcore\SQL\MySQL.java
