@@ -1,9 +1,16 @@
 package de.sirswiperlpp.jcore.Listener;
 
 import de.sirswiperlpp.jcore.API.PlayerAPI;
+import de.sirswiperlpp.jcore.API.ScoreboardAPI;
 import de.sirswiperlpp.jcore.Lang.Language;
 import de.sirswiperlpp.jcore.Main.Main;
 import de.sirswiperlpp.jcore.Provider.BanPROV;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -40,6 +47,7 @@ public class PlayerListener implements Listener
             event.setJoinMessage(language.translateString("join.firsttime", player.getName()));
             player.sendTitle(language.get("join.title"), language.translateString("join.title.sub", player.getName()), 5, 10, 5);
         }
+        ScoreboardAPI.createScoreboard(player);
         event.setJoinMessage("§8[§a+§8] §5" + player.getName());
         player.sendTitle(language.get("join.title"), language.translateString("join.title.sub", player.getName()), 5, 10, 5);
     }

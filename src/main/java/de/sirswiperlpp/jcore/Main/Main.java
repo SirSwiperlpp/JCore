@@ -1,5 +1,6 @@
 package de.sirswiperlpp.jcore.Main;
 
+import de.sirswiperlpp.jcore.API.ScoreboardAPI;
 import de.sirswiperlpp.jcore.Commands.BanCommand;
 import de.sirswiperlpp.jcore.Commands.KickCommand;
 import de.sirswiperlpp.jcore.Commands.TpaCommand;
@@ -10,6 +11,7 @@ import de.sirswiperlpp.jcore.Provider.PlayerPROV;
 import de.sirswiperlpp.jcore.Provider.TpaPROV;
 import de.sirswiperlpp.jcore.SQL.MySQL;
 import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
@@ -77,6 +79,9 @@ public final class Main extends JavaPlugin {
         getCommand("kick").setExecutor(new KickCommand());
         getCommand("tpa").setExecutor(new TpaCommand());
         getCommand("tpa").setTabCompleter(new TpaCompleter());
+
+        Bukkit.getScheduler().runTaskTimer(this, ScoreboardAPI::updateScoreboards, 0L, 20L);
+
     }
 
     @Override
