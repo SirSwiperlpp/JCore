@@ -3,6 +3,7 @@ package de.sirswiperlpp.jcore.Main;
 import de.sirswiperlpp.jcore.API.ScoreboardAPI;
 import de.sirswiperlpp.jcore.Commands.BanCommand;
 import de.sirswiperlpp.jcore.Commands.KickCommand;
+import de.sirswiperlpp.jcore.Commands.SpawnCommand;
 import de.sirswiperlpp.jcore.Commands.TpaCommand;
 import de.sirswiperlpp.jcore.Lang.Language;
 import de.sirswiperlpp.jcore.Listener.PlayerListener;
@@ -11,6 +12,8 @@ import de.sirswiperlpp.jcore.Provider.PlayerPROV;
 import de.sirswiperlpp.jcore.Provider.TpaPROV;
 import de.sirswiperlpp.jcore.SQL.MySQL;
 import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
+import de.sirswiperlpp.jcore.Tasks.PlayTimeTask;
+import de.sirswiperlpp.jcore.Util.PlaytimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -78,14 +81,22 @@ public final class Main extends JavaPlugin {
         getCommand("ban").setExecutor(new BanCommand());
         getCommand("kick").setExecutor(new KickCommand());
         getCommand("tpa").setExecutor(new TpaCommand());
+        getCommand("spawn").setExecutor(new SpawnCommand());
+
         getCommand("tpa").setTabCompleter(new TpaCompleter());
 
+
         Bukkit.getScheduler().runTaskTimer(this, ScoreboardAPI::updateScoreboards, 0L, 20L);
+
+        PlaytimeManager ptm = new PlaytimeManager(this);
+        new PlayTimeTask(this, ptm).runTaskTimer(this, 0L, 1200L); // 1200 Ticks = 1 Minute
+        ptm.loadAllPlayTimes();
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        PlaytimeManager ptm = new PlaytimeManager(this);
+        ptm.saveAllPlayTimes();
     }
 }

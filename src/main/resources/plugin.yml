@@ -14,6 +14,9 @@ commands:
   tpa:
     permission: tpa.use
     description: a command to request Teleports
+  spawn:
+    permission: spawn.use
+    description: Spawn Command
 
 permissions:
   jcore.admin.ban:
@@ -24,4 +27,6 @@ permissions:
     default: op
   tpa.use:
     description: perm for tpa command
+    default: true
+  spawn.use:
     default: true
