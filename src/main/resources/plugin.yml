@@ -17,6 +17,15 @@ commands:
   spawn:
     permission: spawn.use
     description: Spawn Command
+  home:
+    permission: home.use
+    description: Home Command
+  sethome:
+    permission: home.set.use
+    description: Set Home Commnad
+  delhome:
+    permission: home.del.use
+    description: Del Home Command
 
 permissions:
   jcore.admin.ban:
@@ -29,4 +38,10 @@ permissions:
     description: perm for tpa command
     default: true
   spawn.use:
+    default: true
+  home.use:
+    default: true
+  home.set.use:
+    default: true
+  home.del.use:
     default: true

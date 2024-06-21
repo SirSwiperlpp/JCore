@@ -12,13 +12,13 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.sql.SQLException;
 
-public class SetHomeCommand implements CommandExecutor {
+public class DelHomeCommand implements CommandExecutor
+{
 
     static Language language = new Language(new File(Main.getInstance().getDataFolder(), "lang.ini"));
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings)
-    {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
         if (!(commandSender instanceof Player))
         {
@@ -31,12 +31,12 @@ public class SetHomeCommand implements CommandExecutor {
         if (strings.length == 1)
         {
             try {
-                HomeAPI.registerHome(player, strings[0]);
+                HomeAPI.unregisterHome(player, strings[0]);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            player.sendMessage(language.get("prefix") + language.get("set.failed"));
+            player.sendMessage(language.get("prefix") + "use §c/delhome [home]");
         }
         return true;
     }

@@ -1,16 +1,16 @@
 package de.sirswiperlpp.jcore.Main;
 
 import de.sirswiperlpp.jcore.API.ScoreboardAPI;
-import de.sirswiperlpp.jcore.Commands.BanCommand;
-import de.sirswiperlpp.jcore.Commands.KickCommand;
-import de.sirswiperlpp.jcore.Commands.SpawnCommand;
-import de.sirswiperlpp.jcore.Commands.TpaCommand;
+import de.sirswiperlpp.jcore.Commands.*;
 import de.sirswiperlpp.jcore.Lang.Language;
 import de.sirswiperlpp.jcore.Listener.PlayerListener;
 import de.sirswiperlpp.jcore.Provider.BanPROV;
+import de.sirswiperlpp.jcore.Provider.HomePROV;
 import de.sirswiperlpp.jcore.Provider.PlayerPROV;
 import de.sirswiperlpp.jcore.Provider.TpaPROV;
 import de.sirswiperlpp.jcore.SQL.MySQL;
+import de.sirswiperlpp.jcore.TabCom.DelHomeCompleter;
+import de.sirswiperlpp.jcore.TabCom.HomeCompleter;
 import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
 import de.sirswiperlpp.jcore.Tasks.PlayTimeTask;
 import de.sirswiperlpp.jcore.Util.PlaytimeManager;
@@ -71,7 +71,9 @@ public final class Main extends JavaPlugin {
             PlayerPROV.createPlayerTable();
             BanPROV.createBanTable();
             TpaPROV.createPlayerTable();
+            HomePROV.createHomeTable();
         } catch (SQLException e) {
+            System.out.println("Here");
             throw new RuntimeException(e);
         }
 
@@ -82,8 +84,13 @@ public final class Main extends JavaPlugin {
         getCommand("kick").setExecutor(new KickCommand());
         getCommand("tpa").setExecutor(new TpaCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
+        getCommand("home").setExecutor(new HomeCommand());
+        getCommand("sethome").setExecutor(new SetHomeCommand());
+        getCommand("delhome").setExecutor(new DelHomeCommand());
 
         getCommand("tpa").setTabCompleter(new TpaCompleter());
+        getCommand("home").setTabCompleter(new HomeCompleter());
+        getCommand("delhome").setTabCompleter(new DelHomeCompleter());
 
 
         Bukkit.getScheduler().runTaskTimer(this, ScoreboardAPI::updateScoreboards, 0L, 20L);
