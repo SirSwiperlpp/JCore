@@ -2,6 +2,7 @@ de\sirswiperlpp\jcore\Commands\SetHomeCommand.class
 de\sirswiperlpp\jcore\Lang\Language.class
 de\sirswiperlpp\jcore\Commands\DelHomeCommand.class
 de\sirswiperlpp\jcore\Commands\SpawnCommand.class
+de\sirswiperlpp\jcore\Tasks\TabHeaderTask.class
 de\sirswiperlpp\jcore\Provider\EcoPROV.class
 de\sirswiperlpp\jcore\TabCom\DelHomeCompleter.class
 de\sirswiperlpp\jcore\Provider\PlayerPROV.class
@@ -21,6 +22,7 @@ de\sirswiperlpp\jcore\Provider\TpaPROV.class
 de\sirswiperlpp\jcore\TabCom\TpaCompleter.class
 de\sirswiperlpp\jcore\Commands\BanCommand.class
 de\sirswiperlpp\jcore\Commands\KickCommand.class
+de\sirswiperlpp\jcore\API\BasicAPI.class
 de\sirswiperlpp\jcore\API\ScoreboardAPI.class
 de\sirswiperlpp\jcore\API\PlaytimeAPI.class
 de\sirswiperlpp\jcore\API\EcoAPI.class

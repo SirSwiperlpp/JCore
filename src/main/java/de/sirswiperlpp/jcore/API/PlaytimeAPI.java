@@ -12,7 +12,6 @@ import java.util.UUID;
 
 public class PlaytimeAPI
 {
-
     public static int getPlayerMinutes(Main plugin, UUID playerId)
     {
         File playerFile = new File(plugin.getDataFolder(), playerId.toString() + ".json");

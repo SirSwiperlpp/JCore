@@ -13,6 +13,7 @@ import de.sirswiperlpp.jcore.TabCom.DelHomeCompleter;
 import de.sirswiperlpp.jcore.TabCom.HomeCompleter;
 import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
 import de.sirswiperlpp.jcore.Tasks.PlayTimeTask;
+import de.sirswiperlpp.jcore.Tasks.TabHeaderTask;
 import de.sirswiperlpp.jcore.Util.PlaytimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -79,6 +80,8 @@ public final class Main extends JavaPlugin {
 
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(), this);
+
+        new TabHeaderTask(this).runTaskTimer(this, 0, 100);
 
         getCommand("ban").setExecutor(new BanCommand());
         getCommand("kick").setExecutor(new KickCommand());
