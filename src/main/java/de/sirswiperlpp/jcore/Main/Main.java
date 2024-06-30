@@ -3,11 +3,14 @@ package de.sirswiperlpp.jcore.Main;
 import de.sirswiperlpp.jcore.API.ScoreboardAPI;
 import de.sirswiperlpp.jcore.Commands.*;
 import de.sirswiperlpp.jcore.Lang.Language;
+import de.sirswiperlpp.jcore.Listener.NoBuildListener;
+import de.sirswiperlpp.jcore.Listener.NoExpoListener;
 import de.sirswiperlpp.jcore.Listener.PlayerListener;
 import de.sirswiperlpp.jcore.Provider.BanPROV;
 import de.sirswiperlpp.jcore.Provider.HomePROV;
 import de.sirswiperlpp.jcore.Provider.PlayerPROV;
 import de.sirswiperlpp.jcore.Provider.TpaPROV;
+import de.sirswiperlpp.jcore.SQL.JobSQL;
 import de.sirswiperlpp.jcore.SQL.MySQL;
 import de.sirswiperlpp.jcore.TabCom.DelHomeCompleter;
 import de.sirswiperlpp.jcore.TabCom.HomeCompleter;
@@ -68,6 +71,7 @@ public final class Main extends JavaPlugin {
         loadConfiguration();
         checkAndCreateLanguageFile();
         MySQL.connect("JAL");
+        JobSQL.connect("JAL_JOB");
         try {
             PlayerPROV.createPlayerTable();
             BanPROV.createBanTable();
@@ -80,6 +84,8 @@ public final class Main extends JavaPlugin {
 
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(), this);
+        pm.registerEvents(new NoBuildListener(this), this);
+        pm.registerEvents(new NoExpoListener(this), this);
 
         new TabHeaderTask(this).runTaskTimer(this, 0, 100);
 

@@ -2,6 +2,7 @@ de\sirswiperlpp\jcore\Commands\SetHomeCommand.class
 de\sirswiperlpp\jcore\Lang\Language.class
 de\sirswiperlpp\jcore\Commands\DelHomeCommand.class
 de\sirswiperlpp\jcore\Commands\SpawnCommand.class
+de\sirswiperlpp\jcore\Listener\NoBuildListener.class
 de\sirswiperlpp\jcore\Tasks\TabHeaderTask.class
 de\sirswiperlpp\jcore\Provider\EcoPROV.class
 de\sirswiperlpp\jcore\TabCom\DelHomeCompleter.class
@@ -9,6 +10,7 @@ de\sirswiperlpp\jcore\Provider\PlayerPROV.class
 de\sirswiperlpp\jcore\Tasks\PlayTimeTask.class
 de\sirswiperlpp\jcore\TabCom\HomeCompleter.class
 de\sirswiperlpp\jcore\API\HomeAPI.class
+de\sirswiperlpp\jcore\SQL\JobSQL.class
 de\sirswiperlpp\jcore\SQL\MySQL.class
 de\sirswiperlpp\jcore\API\TpaAPI.class
 de\sirswiperlpp\jcore\Commands\TpaCommand.class
@@ -18,6 +20,8 @@ de\sirswiperlpp\jcore\Provider\HomePROV.class
 de\sirswiperlpp\jcore\Util\PlaytimeManager.class
 de\sirswiperlpp\jcore\Main\Main.class
 de\sirswiperlpp\jcore\Provider\BanPROV.class
+de\sirswiperlpp\jcore\Listener\NoExpoListener.class
+de\sirswiperlpp\jcore\Provider\JobPROV.class
 de\sirswiperlpp\jcore\Provider\TpaPROV.class
 de\sirswiperlpp\jcore\TabCom\TpaCompleter.class
 de\sirswiperlpp\jcore\Commands\BanCommand.class

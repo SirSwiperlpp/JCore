@@ -25,6 +25,7 @@ public class HomeAPI
 
     public static void registerHome(Player player, String Homename) throws SQLException
     {
+        String home = HomePROV.getHome(player, Homename);
 
         if (HomeAPI.countHomes(player.getName()) == 3)
         {
@@ -32,9 +33,9 @@ public class HomeAPI
             return;
         }
 
-        if (Objects.equals(HomePROV.getHomeOwner(Homename), player.getName()))
+        if (Objects.equals(HomePROV.getHomeOwner(home, player.getName()), player.getName()))
         {
-            HomePROV.removeHome(Homename);
+            HomePROV.removeHome(Homename, player.getName());
             HomePROV.insertHome(player, Homename);
             player.sendMessage(language.get("prefix") + language.translateString("recreated", Homename, String.valueOf(HomeAPI.countHomes(player.getName())), "3"));
             return;
@@ -45,11 +46,11 @@ public class HomeAPI
     }
 
     public static void unregisterHome(Player player, String Homename) throws SQLException {
-        String HomeOwner = HomePROV.getHomeOwner(Homename);
+        String HomeOwner = HomePROV.getHomeOwner(Homename, player.getName());
 
         if (Objects.equals(HomeOwner, player.getName()))
         {
-            HomePROV.removeHome(Homename);
+            HomePROV.removeHome(Homename, player.getName());
             player.sendMessage(language.get("prefix") + language.translateString("removed", Homename, String.valueOf(HomeAPI.countHomes(player.getName())), "3"));
         }
     }
@@ -57,25 +58,70 @@ public class HomeAPI
     public static void teleportToHome(Player player, String homename)
     {
         try {
-            String locX = HomePROV.getX(homename);
-            String locY = HomePROV.getY(homename);
-            String locZ = HomePROV.getZ(homename);
-            String locWorld = HomePROV.getWorld(homename);
-            String homeowner = HomePROV.getHomeOwner(homename);
+            System.out.println("Getting Data..");
+            String home = HomePROV.getHome(player, homename);
+            System.out.println("Got Home!");
+            String locX = HomePROV.getX(home, player.getName());
+            System.out.println("Got X!");
+            String locY = HomePROV.getY(home, player.getName());
+            System.out.println("Got Y!");
+            String locZ = HomePROV.getZ(home, player.getName());
+            System.out.println("Got XZ");
+            String locWorld = HomePROV.getWorld(home, player.getName());
+            System.out.println("Got World!");
+            String homeowner = HomePROV.getHomeOwner(home, player.getName());
+            System.out.println("Got homeowner!");
 
+            if (Objects.equals(locX, "NF"))
+            {
+                player.sendMessage(language.get("prefix") + language.translateString("no.home"));
+                return;
+            }
+            if (Objects.equals(locY, "NF"))
+            {
+                player.sendMessage(language.get("prefix") + language.translateString("no.home"));
+                return;
+            }
+            if (Objects.equals(locZ, "NF"))
+            {
+                player.sendMessage(language.get("prefix") + language.translateString("no.home"));
+                return;
+            }
+            if (Objects.equals(locWorld, "NF"))
+            {
+                player.sendMessage(language.get("prefix") + language.translateString("no.home"));
+                return;
+            }
             double x = Double.parseDouble(locX);
+            System.out.println("X EQ DOUBLE");
             double y = Double.parseDouble(locY);
+            System.out.println("Y EQ DOUBLE");
             double z = Double.parseDouble(locZ);
+            System.out.println("Z EQ DOUBLE");
             World world = Bukkit.getWorld(locWorld);
+            System.out.println("world is now BukkitWorld");
 
             Location location = new Location(world, x, y, z);
 
+            System.out.println("is Home EQ Home?");
+            if (!Objects.equals(home, homename))
+            {
+                System.out.println("no home");
+                player.sendMessage(language.get("prefix") + language.get("no.home"));
+                return;
+            }
+
+            System.out.println("Owner?");
             if (Objects.equals(homeowner, player.getName()))
             {
+                System.out.println("yee, ready for Tp?");
                 player.teleport(location);
+                System.out.println("Tped!");
                 player.sendMessage(language.get("prefix") + language.translateString("h.tpd", homename));
+                System.out.println("Task Done!");
                 return;
             } else {
+                System.out.println("Nope!");
                 player.sendMessage(language.get("prefix") + language.get("tp.canceled"));
                 return;
             }
