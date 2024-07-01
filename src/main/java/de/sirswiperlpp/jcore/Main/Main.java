@@ -18,6 +18,7 @@ import de.sirswiperlpp.jcore.TabCom.TpaCompleter;
 import de.sirswiperlpp.jcore.Tasks.PlayTimeTask;
 import de.sirswiperlpp.jcore.Tasks.TabHeaderTask;
 import de.sirswiperlpp.jcore.Util.PlaytimeManager;
+import de.sirswiperlpp.jcore.Util.VanishManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -83,9 +84,10 @@ public final class Main extends JavaPlugin {
         }
 
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new PlayerListener(), this);
+        pm.registerEvents(new PlayerListener(this), this);
         pm.registerEvents(new NoBuildListener(this), this);
         pm.registerEvents(new NoExpoListener(this), this);
+        pm.registerEvents(new VanishManager(this), this);
 
         new TabHeaderTask(this).runTaskTimer(this, 0, 100);
 
@@ -96,6 +98,7 @@ public final class Main extends JavaPlugin {
         getCommand("home").setExecutor(new HomeCommand());
         getCommand("sethome").setExecutor(new SetHomeCommand());
         getCommand("delhome").setExecutor(new DelHomeCommand());
+        getCommand("vanish").setExecutor(new VanishCommand(new VanishManager(this)));
 
         getCommand("tpa").setTabCompleter(new TpaCompleter());
         getCommand("home").setTabCompleter(new HomeCompleter());

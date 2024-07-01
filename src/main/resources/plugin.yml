@@ -26,6 +26,9 @@ commands:
   delhome:
     permission: home.del.use
     description: Del Home Command
+  vanish:
+    permission: vanish.admin
+    description: Vanish Command
 
 permissions:
   jcore.admin.ban:
@@ -45,3 +48,5 @@ permissions:
     default: true
   home.del.use:
     default: true
+  vanish.admin:
+    default: op
